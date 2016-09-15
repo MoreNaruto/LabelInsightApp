@@ -1,24 +1,58 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
-<html ng-app="LabelInsightApp">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>LabelInsight</title>
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="app.css">
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-</head>
-<body>
+<!--[if lt IE 7]>      <html lang="en" ng-app="labelInsightApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="labelInsightApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="labelInsightApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="labelInsightApp" class="no-js"> <!--<![endif]-->
+<html ng-app="labelInsightApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LabelInsight</title>
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-controller="PhotoController">
 
-  <p>Nothing here {{'yet' + '!'}}</p>
+    <div>
+      <carousel interval="myInterval">
+        <slide ng-repeat="slide in photos" active="slide.active">
+          <img ng-src="{{slide.url}}">
+          <div class="carousel-caption">
+            <h4>Slide {{$index+1}}</h4>
+          </div>
+        </slide>
+      </carousel>
+    </div>
+    <!--<div id="myCarousel" class="carousel slide" data-ride="carousel">-->
+      <!--&lt;!&ndash; Indicators &ndash;&gt;-->
+      <!--<ol class="carousel-indicators">-->
+        <!--<li data-target="#myCarousel" data-slide-to="0" class="active"></li>-->
+        <!--<li data-target="#myCarousel" data-slide-to="1"></li>-->
+        <!--<li data-target="#myCarousel" data-slide-to="2"></li>-->
+        <!--<li data-target="#myCarousel" data-slide-to="3"></li>-->
+      <!--</ol>-->
 
-</body>
+      <!--&lt;!&ndash; Wrapper for slides &ndash;&gt;-->
+      <!--<div ng-repeat="photo in photos" class="carousel-inner" role="listbox">-->
+        <!--<div class="item">-->
+          <!--<img ng-src={{photo.url}}">-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--&lt;!&ndash; Left and right controls &ndash;&gt;-->
+      <!--<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">-->
+        <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
+        <!--<span class="sr-only">Previous</span>-->
+      <!--</a>-->
+      <!--<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">-->
+        <!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
+        <!--<span class="sr-only">Next</span>-->
+      <!--</a>-->
+    <!--</div>-->
+  </body>
 </html>

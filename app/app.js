@@ -1,20 +1,13 @@
 'use strict';
 
-var labelInsightApp = angular.module('myApp', [
-  'ngRoute',
-  'myApp.view1',
-  'myApp.version'
-]);
+var labelInsightApp = angular.module('labelInsightApp', []);
 
-labelInsightApp.controller('PhotoController', ['$scope', function($scope) {
-  $scope.photos = function () {
-    $http({
-      method: 'GET',
-      url: 'https://jsonplaceholder.typicode.com/photos'
-    }).then(function success(response) {
-      return response;
-    }, function error(response) {
-      return response;
-    });
-  }
-}]);
+labelInsightApp.controller('PhotoController', function($scope, $http) {
+    $http.get("https://jsonplaceholder.typicode.com/photos")
+        .then(function success(response) {
+            $scope.photos = response.data;
+        }, function error(response) {
+            return response.data.message;
+        });
+
+});
