@@ -14,19 +14,20 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="app.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
   </head>
   <body ng-controller="PhotoController">
-
-    <div>
-      <carousel interval="myInterval">
-        <slide ng-repeat="slide in photos" active="slide.active">
-          <img ng-src="{{slide.url}}">
-          <div class="carousel-caption">
-            <h4>Slide {{$index+1}}</h4>
-          </div>
-        </slide>
-      </carousel>
+    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+      <div uib-slide ng-repeat="photo in photos track by photo.id" index="slide.id">
+        <img ng-src="{{photo.url}}" style="margin:auto;">
+        <div class="carousel-caption">
+          <h4>Slide {{photo.id}}</h4>
+          <p>{{photo.title}}</p>
+        </div>
+      </div>
     </div>
     <!--<div id="myCarousel" class="carousel slide" data-ride="carousel">-->
       <!--&lt;!&ndash; Indicators &ndash;&gt;-->
