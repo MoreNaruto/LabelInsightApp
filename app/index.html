@@ -20,20 +20,38 @@
   <body ng-controller="PhotoController">
       <div ng-repeat="photo in photos" ng-if="photo.id % 5 == 1 " class="row">
           <div class="col-xs-2">
-              <img ng-src="{{photos[$index].thumbnailUrl}}">
-          </div>
+              <img ng-click="showModal(photos[$index])" ng-src="{{photos[$index].thumbnailUrl}}">
+=          </div>
           <div class="col-xs-2" ng-if="photos.length > ($index + 1)">
-              <a href="#"
-              <img ng-src="{{photos[$index + 1].thumbnailUrl}}">
+              <img ng-click="showModal(photos[$index + 1])" ng-src="{{photos[$index + 1].thumbnailUrl}}">
           </div>
           <div class="col-xs-2" ng-if="photos.length > ($index + 2)">
-              <img ng-src="{{photos[$index + 2].thumbnailUrl}}">
+              <img ng-click="showModal(photos[$index + 2])" ng-src="{{photos[$index + 2].thumbnailUrl}}">
           </div>
           <div class="col-xs-2" ng-if="photos.length > ($index + 3)">
-              <img ng-src="{{photos[$index + 3].thumbnailUrl}}">
+              <img ng-click="showModal(photos[$index + 3])" ng-src="{{photos[$index + 3].thumbnailUrl}}">
           </div>
           <div class="col-xs-2" ng-if="photos.length > ($index + 4)">
-              <img ng-src="{{photos[$index + 4].thumbnailUrl}}">
+              <img ng-click="showModal(photos[$index + 4])" ng-src="{{photos[$index + 4].thumbnailUrl}}">
+          </div>
+      </div>
+
+      <div ng-repeat="photo in photos">
+          <div class="modal fade" id="photo-modal-{{photo.id}}" tabindex="-1" role="dialog" aria-labelledby="photoModalNumber{{photo.id}}" aria-hidden="true">
+              <div class="modal-dialog" data-dismiss="modal">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                          <h4 class="modal-title" id="photo-title">{{photo.title}}</h4>
+                      </div>
+                      <div class="modal-body">
+                          <img src="{{photo.url}}">
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                  </div>
+              </div>
           </div>
       </div>
   </body>
