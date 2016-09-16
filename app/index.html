@@ -8,8 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>LabelInsight</title>
-    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="app.css">
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -17,43 +16,25 @@
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
   </head>
   <body ng-controller="PhotoController">
-    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-      <div uib-slide ng-repeat="photo in photos track by photo.id" index="slide.id">
-        <img ng-src="{{photo.url}}" style="margin:auto;">
-        <div class="carousel-caption">
-          <h4>Slide {{photo.id}}</h4>
-          <p>{{photo.title}}</p>
-        </div>
+      <div ng-repeat="photo in photos" ng-if="photo.id % 5 == 1 " class="row">
+          <div class="col-xs-2">
+              <img ng-src="{{photos[$index].thumbnailUrl}}">
+          </div>
+          <div class="col-xs-2" ng-if="photos.length > ($index + 1)">
+              <a href="#"
+              <img ng-src="{{photos[$index + 1].thumbnailUrl}}">
+          </div>
+          <div class="col-xs-2" ng-if="photos.length > ($index + 2)">
+              <img ng-src="{{photos[$index + 2].thumbnailUrl}}">
+          </div>
+          <div class="col-xs-2" ng-if="photos.length > ($index + 3)">
+              <img ng-src="{{photos[$index + 3].thumbnailUrl}}">
+          </div>
+          <div class="col-xs-2" ng-if="photos.length > ($index + 4)">
+              <img ng-src="{{photos[$index + 4].thumbnailUrl}}">
+          </div>
       </div>
-    </div>
-    <!--<div id="myCarousel" class="carousel slide" data-ride="carousel">-->
-      <!--&lt;!&ndash; Indicators &ndash;&gt;-->
-      <!--<ol class="carousel-indicators">-->
-        <!--<li data-target="#myCarousel" data-slide-to="0" class="active"></li>-->
-        <!--<li data-target="#myCarousel" data-slide-to="1"></li>-->
-        <!--<li data-target="#myCarousel" data-slide-to="2"></li>-->
-        <!--<li data-target="#myCarousel" data-slide-to="3"></li>-->
-      <!--</ol>-->
-
-      <!--&lt;!&ndash; Wrapper for slides &ndash;&gt;-->
-      <!--<div ng-repeat="photo in photos" class="carousel-inner" role="listbox">-->
-        <!--<div class="item">-->
-          <!--<img ng-src={{photo.url}}">-->
-        <!--</div>-->
-      <!--</div>-->
-
-      <!--&lt;!&ndash; Left and right controls &ndash;&gt;-->
-      <!--<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">-->
-        <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
-        <!--<span class="sr-only">Previous</span>-->
-      <!--</a>-->
-      <!--<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">-->
-        <!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
-        <!--<span class="sr-only">Next</span>-->
-      <!--</a>-->
-    <!--</div>-->
   </body>
 </html>
