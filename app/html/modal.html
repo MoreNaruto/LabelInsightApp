@@ -1,0 +1,19 @@
+<div class="modal-body" ng-controller="PhotoController">
+    <div class="modal-header">
+        <h3 class="modal-title">{{photos[0].title}}</h3>
+    </div>
+    <div class="modal-body">
+        <img ng-src="{{photos[0].url}}"/>
+    </div>
+    <ul class="modal-footer">
+        <li ng-repeat="userInput in userInputs track by $index">
+            <div>{{userInput.text}}</div>
+        </li>
+
+        <form data-ng-submit="saveUserResponse()" >
+            <input type="text" data-ng-model="userText" placeholder="Enter some text" />
+            <br />
+            <input type="submit" value="Input" />
+        </form>
+    </ul>
+</div>
